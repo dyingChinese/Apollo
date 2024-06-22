@@ -204,6 +204,7 @@ struct AssignExpression : public Expression {
 
     ValueDeclaration eval(Runtime *runtime, std::deque<Context *> ctxChain) override;
 
+    string astString() override;
 };
 
 struct Statement : public AbstractSyntaxTreeNode {
