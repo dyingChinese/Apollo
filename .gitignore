@@ -1,0 +1,56 @@
+# 忽略编译生成的对象文件
+*.o
+*.obj
+
+# 忽略可执行文件
+*.exe
+*.out
+*.app
+
+# 忽略编译生成的中间文件
+*.d
+
+# 忽略链接生成的动态库
+*.dylib
+*.so
+
+# 忽略链接生成的静态库
+*.a
+
+# 忽略特定的IDE生成的文件
+*.pdb
+*.idb
+*.sdf
+*.suo
+*.ncb
+*.sln
+*.sln.DotSettings.user
+
+# 忽略调试生成的文件
+*.ilk
+*.log
+*.manifest
+*.embed.manifest
+
+# 忽略临时文件和备份文件
+*.tmp
+*~
+*.bak
+*.swp
+*.swo
+*.sw?
+*.gch
+*.gcno
+*.gcda
+.idea/
+# 忽略一些特定的文件夹
+bin/
+cmake-build-debug/
+cmake-build-release/
+build/
+debug/
+release/
+x64/
+obj/
+lib/
+temp/
