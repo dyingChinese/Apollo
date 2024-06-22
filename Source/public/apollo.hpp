@@ -164,11 +164,14 @@ namespace apollo {
 
         bool hasVariable(const string &identName);
 
+
         void createVariable(const string &identName, ValueDeclaration value);
 
         ValueDeclaration *getVariable(const string &identName);
 
         void addFunction(const string &name, FunctionDeclaration *f);
+
+        bool hasFunction(const string &name);
 
         FunctionDeclaration *getFunctionDeclaration(const string &name);
 

@@ -141,7 +141,14 @@ struct StringExpression : public Expression {
 
     string astString() override;
 };
+struct ArrayExpression : public Expression {
+    explicit ArrayExpression(int start, int end) : Expression(start, end) {}
 
+    std::vector<Expression*> literal;
+
+    ValueDeclaration eval(Runtime* rt, std::deque<Context*> ctxChain) override;
+    std::string astString();
+};
 struct IdentExpression : public Expression {
     explicit IdentExpression(string identName, int start, int end)
             : Expression(start, end), identName(std::move(identName)) {}
@@ -237,8 +244,8 @@ struct ExpressionStmt : public Statement {
 
 };
 
-struct RetrunStmt : public Statement {
-    explicit RetrunStmt(int start, int end) : Statement(start, end) {};
+struct ReturnStmt : public Statement {
+    explicit ReturnStmt(int start, int end) : Statement(start, end) {};
 
     Expression *expression;
 
