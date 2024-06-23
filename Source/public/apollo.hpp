@@ -86,11 +86,39 @@ namespace apollo {
         template<int _apollo>
         inline bool isType();
 
+        template<typename T>
+        inline T getTypeName();
+
+        template<typename T>
+        inline bool isSameType(T val);
+
+        template<typename T1, typename T2>
+        inline bool isSameType(T1 val1, T2 val2);
+
         template<typename _CastingType>
         inline _CastingType castingType();
 
         template<typename _DataType>
         inline void set(_DataType data);
+
+
+        template<typename T>
+        inline bool isInt(T value);
+
+        template<>
+        inline bool isInt<int>(int value);
+
+        template<>
+        inline bool isInt<double>(double value);
+
+        template<typename T>
+        inline bool isDouble(T value);
+
+        template<>
+        inline bool isDouble<int>(int value);
+
+        template<>
+        inline bool isDouble<double>(double value);
 
         ValueDeclaration operator+(ValueDeclaration rhs);
 
@@ -167,7 +195,7 @@ namespace apollo {
 
         void createVariable(const string &identName, ValueDeclaration value);
 
-        ValueDeclaration *getVariable(const string &identName);
+        VariableDeclaration *getVariable(const string &identName);
 
         void addFunction(const string &name, FunctionDeclaration *f);
 
@@ -176,7 +204,7 @@ namespace apollo {
         FunctionDeclaration *getFunctionDeclaration(const string &name);
 
     private:
-        std::unordered_map<std::string, ValueDeclaration *> vars;
+        std::unordered_map<std::string, VariableDeclaration *> vars;
         std::unordered_map<std::string, FunctionDeclaration *> funcs;
     };
 
@@ -214,6 +242,51 @@ namespace apollo {
     template<typename _DataType>
     inline void ValueDeclaration::set(_DataType data) {
         this->data = std::make_any<_DataType>(std::move(data));
+    }
+
+    template<typename T>
+    T ValueDeclaration::getTypeName() {
+        return typeid(T).name();
+    }
+
+    template<typename T>
+    bool ValueDeclaration::isSameType(T val) {
+        return typeid(val) == typeid(T);
+    }
+
+    template<typename T1, typename T2>
+    bool ValueDeclaration::isSameType(T1 val1, T2 val2) {
+        return typeid(val1) == typeid(val2);
+    }
+
+    template<>
+    bool ValueDeclaration::isInt<int>(int value) {
+        return false;
+    }
+
+    template<typename T>
+    bool ValueDeclaration::isInt(T value) {
+        return false;
+    }
+
+    template<>
+    bool ValueDeclaration::isInt<double>(double value) {
+        return false;
+    }
+
+    template<typename T>
+    bool ValueDeclaration::isDouble(T value) {
+        return false;
+    }
+
+    template<>
+    bool ValueDeclaration::isDouble<int>(int value) {
+        return false;
+    }
+
+    template<>
+    bool ValueDeclaration::isDouble<double>(double value) {
+        return true;
     }
 
 }
