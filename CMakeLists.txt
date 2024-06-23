@@ -15,4 +15,4 @@ add_executable(Apollo
         ${SOURCE_FILES_HPP}
         ${SOURCE_FILES_CPP}
         Source/public/AbstractSyntaxTree.hpp
-        Source/public/apollo.hpp Source/public/Parser.hpp Source/private/Parser.cpp Source/public/Utils.hpp Source/private/Interpreter.cpp Source/public/Interpreter.hpp Source/public/Builtin.hpp Source/private/AbstractSyntaxTree.cpp)
+        Source/public/apollo.hpp Source/public/Parser.hpp Source/private/Parser.cpp Source/public/Utils.hpp Source/private/Interpreter.cpp Source/public/Interpreter.hpp Source/private/AbstractSyntaxTree.cpp Source/private/Utils.cpp Source/private/apollo.cpp)
